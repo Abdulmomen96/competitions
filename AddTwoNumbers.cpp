@@ -33,11 +33,14 @@ public:
                 sum = (carr + head_1 -> val) % 10;
                 carr = (carr + head_1 -> val ) / 10;
             }
+            printf("%d, ", sum);
             head_out -> val = sum;
             head_1 = head_1 -> next;
-            if (carr == 0 && head_1 -> next == NULL)
+            if (carr == 0 && head_1 == NULL && head_2 == NULL)
             {
-                
+                //head_out = NULL;
+
+
 
             }
             else
@@ -45,13 +48,37 @@ public:
                 ListNode* temp = new ListNode;
                 head_out -> next = temp;
                 head_out = temp;
+                head_out -> next = NULL;
 
             }
             
-            head_out -> next = NULL;
-            printf("%d, ", head_out -> val);
             
             
+            
+        }
+        for (;head_2 != NULL;)
+        {
+            sum = (carr + head_2 -> val) % 10;
+            carr = (carr + head_2 -> val ) / 10;
+            head_out -> val = sum;
+            head_2 = head_2 -> next;
+            if (carr == 0 && head_2 == NULL)
+            {
+                //head_out = NULL;
+
+
+
+            }
+            else
+            {
+                ListNode* temp = new ListNode;
+                head_out -> next = temp;
+                head_out = temp;
+                head_out -> next = NULL;
+
+            }
+
+
         }
         if (carr != 0)
         {
@@ -59,11 +86,6 @@ public:
             head_out -> val += carr;
             printf("%d\n", head_out -> val);
 
-        }
-        else if (head_out -> val == 0)
-        {
-            printf("yes");
-            head_out = NULL;
         }
 
         return output;
